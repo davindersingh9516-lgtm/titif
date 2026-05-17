@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tiffin</string>
+    <string name="title_activity_main">Tiffin</string>
+    <string name="package_name">com.tiffin.app</string>
+    <string name="custom_url_scheme">com.tiffin.app</string>
+</resources>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e58a3a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Tiffin</title>
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+    <style>
+      /* height:100% cascades into a full layout reflow when adjustResize shrinks
+         the viewport on keyboard open. min-height:100svh fixes at the small
+         viewport size (no keyboard) so keyboard show/hide causes zero reflow. */
+      html, body { overscroll-behavior: none; margin: 0; min-height: 100svh; }
+      #root { min-height: 100svh; display: flex; flex-direction: column; }
+      /* Loading overlay — shown until React mounts and removes it */
+      #app-loading {
+        position: fixed; inset: 0; z-index: 99999;
+        background: #0f172a;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 20px;
+      }
+      #app-loading .logo {
+        font-size: 28px; font-weight: 700; color: #e58a3a;
+        font-family: system-ui, sans-serif; letter-spacing: -0.5px;
+      }
+      #app-loading .spinner {
+        width: 36px; height: 36px;
+        border: 3px solid rgba(229,138,58,0.25);
+        border-top-color: #e58a3a;
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error('[T]', e.message, e.filename ? e.filename.split('/').pop() : '', e.lineno);
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('[T]', String(e.reason));
+    });
+    setTimeout(function() {
+      var el = document.getElementById('app-loading');
+      if (el) { console.error('[T] still loading after 5s — JS module failed'); el.remove(); }
+    }, 5000);
+  </script>
+    <!-- Shown until JS loads and React renders — prevents tapping inputs during JS parse -->
+    <div id="app-loading" aria-hidden="true">
+      <div class="logo">Tiffin</div>
+      <div class="spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.mobile.tsx"></script>
+  </body>
+</html>

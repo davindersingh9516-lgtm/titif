@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep -l \"from '@'\")",
+      "Bash(xargs grep -l \"VITE_SUPABASE\")",
+      "Bash(xargs basename -a)",
+      "Bash(node scripts/generate-icons.mjs)",
+      "Bash(npx tsc *)",
+      "Bash(dir public\\\\icon*.png)",
+      "Bash(dir .env.example)",
+      "Bash(dir supabase\\\\migrations\\\\2026051410*.sql)",
+      "Bash(dir src\\\\hooks\\\\use-feature*.ts)",
+      "Bash(dir src\\\\hooks\\\\use-cutoff*.ts)",
+      "Bash(Get-ChildItem public\\\\icon*.png)",
+      "Bash(Get-ChildItem .env.example)",
+      "Bash(Get-ChildItem supabase\\\\migrations\\\\2026051410*.sql)",
+      "Bash(Get-ChildItem src\\\\hooks\\\\use-feature*.ts)",
+      "Bash(Get-ChildItem src\\\\hooks\\\\use-cutoff*.ts)",
+      "WebSearch",
+      "Bash(npm install *)"
+    ]
+  }
+}
